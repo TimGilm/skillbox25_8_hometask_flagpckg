@@ -35,12 +35,16 @@ func substringSearch(str string, subStr string) bool {
 cycle:
 	for i, letterMainString := range mainS {
 		if letterMainString == subS[0] {
-			for j := 0; j < len(subS); j++ {
-				if mainS[i+j] != subS[j] {
-					break cycle
+			if i+len(subS) > len(mainS) {
+				break
+			} else {
+				for j := 0; j < len(subS); j++ {
+					if mainS[i+j] != subS[j] {
+						break cycle
+					}
 				}
+				return true
 			}
-			return true
 		}
 	}
 	return false
